@@ -5,6 +5,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   
   return {
+    // Required for GitHub Pages (repo is served from /Revue.AI-2-/)
+    base: '/Revue.AI-2-/',
     plugins: [react()],
     define: {
       'process.env.REACT_APP_N8N_CHATBOT_URL': JSON.stringify(env.REACT_APP_N8N_CHATBOT_URL),

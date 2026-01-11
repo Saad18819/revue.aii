@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import DecisionIntelligence from './components/DecisionIntelligence'
 import ChatbotWidget from './components/ChatbotWidget'
@@ -7,20 +7,9 @@ import Signup from './components/Signup'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
-// Protected Route Component
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const isLoggedIn = localStorage.getItem('isLoggedIn')
-  
-  if (!isLoggedIn || isLoggedIn !== 'true') {
-    return <Navigate to="/login" replace />
-  }
-
-  return <>{children}</>
-}
-
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ChatbotWidget />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -112,6 +101,6 @@ export default function App() {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
